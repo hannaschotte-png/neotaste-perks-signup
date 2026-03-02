@@ -1,37 +1,26 @@
 
 
-## Neotaste Corporate Benefits – Landing Page & Sign-up Flow
+## Änderungen am Hero-Bereich & Button-Hover
 
-### Design & Branding
-- Dunkles Neotaste-Grün als Hintergrund, weiße Schrift
-- Neotaste-Logo oben eingebunden
-- Professionelles, modernes Layout im Neotaste-Stil
-- Responsive für Desktop & Mobile
+### 1. Neotaste "N"-Logo statt Text-Logo
+- Das hochgeladene N-Logo (`user-uploads://image.png`) wird nach `public/neotaste-logo.png` kopiert
+- Der bisherige Text "neotaste" im Header wird durch ein `<img>` mit dem N-Logo ersetzt (ca. 56px Größe, zentriert)
 
-### Seitenstruktur
+### 2. Mehr Spacing & besseres Layout im Hero
+- Header-Padding erhöhen: `pt-16 pb-24` statt `pt-12 pb-20`
+- Mehr `space-y-10` statt `space-y-8` zwischen Logo, Headline und Subtext
+- Gap zwischen Pricing-Cards und Hero vergrößern (`gap-8`)
 
-**1. Hero-Bereich**
-- Neotaste Logo
-- Überschrift: „Neotaste als Corporate Benefit für Ihr Team"
-- Kurze Erklärung, was Neotaste ist und warum es der perfekte Corporate Benefit ist
+### 3. Headline UX-Verbesserung
+- "Neotaste" visuell hervorheben (in Primary-Grün, eigene Zeile oder mit Gradient)
+- Subtitle "als Corporate Benefit für Ihr Team" als separater, etwas kleinerer Text darunter
+- Insgesamt eine schönere typografische Hierarchie
 
-**2. Zwei Pricing-Optionen nebeneinander**
-- **Monatliches Abo**: 4,99€ pro Mitarbeiter/Monat – flexible, monatlich kündbar
-- **Jahres-Abo** (hervorgehoben mit „Empfohlen"-Badge, visuell größer/auffälliger): 47,88€ pro Mitarbeiter/Jahr (entspricht 3,99€/Monat – 20% Ersparnis)
-- Jeweils ein „Jetzt starten"-Button
+### 4. "Jetzt starten"-Button Hover beim Jahres-Abo
+- Der Primary-Button beim Jahres-Abo bekommt einen Custom-Hover-Effekt: beim Hover wird der Hintergrund dunkel (z.B. `hover:bg-primary-foreground hover:text-primary`), sodass die Farben invertieren – ein "Dark Mode Switch"-Effekt
 
-**3. Sign-up Formular (öffnet sich nach Klick auf eine Option)**
-- Gewähltes Modell wird oben angezeigt
-- Felder: Firmenname, Ansprechpartner (Vor-/Nachname), E-Mail, Telefon, Anzahl Mitarbeiter, optionale Nachricht
-- „Anfrage absenden"-Button
-
-**4. Bestätigungsseite**
-- Danke-Nachricht mit Zusammenfassung der Anfrage
-- Info, dass sich jemand melden wird
-
-### Backend (Lovable Cloud)
-- **Datenbank**: Anfragen werden in einer Supabase-Tabelle gespeichert
-- **E-Mail Edge Function**: 
-  - Bestätigungs-E-Mail an den Kunden
-  - Benachrichtigungs-E-Mail an partnerships@neotaste.app mit allen Formulardaten
+### Technische Details
+- Datei: `src/pages/Index.tsx` – Hero-Bereich (Zeilen 130-148) und Annual-Button (Zeile 199)
+- Neues Asset: `public/neotaste-logo.png` (kopiert aus Upload)
+- Keine Backend-Änderungen nötig
 
