@@ -130,16 +130,19 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <header className="pt-12 pb-20 px-4">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
+      <header className="pt-16 pb-24 px-4">
+        <div className="max-w-4xl mx-auto text-center space-y-10">
           <div className="flex justify-center">
-            <span className="text-3xl font-extrabold tracking-tight">
-              neo<span className="text-primary">taste</span>
-            </span>
+            <img src="/neotaste-logo.png" alt="Neotaste" className="h-14 w-14" />
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
-            Neotaste als Corporate Benefit für Ihr Team
-          </h1>
+          <div className="space-y-4">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-none">
+              <span className="text-primary">Neotaste</span>
+            </h1>
+            <p className="text-2xl md:text-3xl font-semibold text-muted-foreground">
+              als Corporate Benefit für Ihr Team
+            </p>
+          </div>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Bieten Sie Ihren Mitarbeitern exklusive Restaurant-Deals und kulinarische Erlebnisse –
             der moderne Benefit, der wirklich begeistert.
@@ -149,7 +152,7 @@ const Index = () => {
 
       {/* Pricing Cards */}
       <section className="px-4 pb-24">
-        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-6 items-end">
+        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8 items-end">
           {/* Monthly */}
           <Card className="bg-card border-border relative overflow-hidden">
             <CardHeader className="pb-2 pt-8 px-8">
@@ -196,7 +199,7 @@ const Index = () => {
                 <li className="flex items-center gap-2"><Check className="w-4 h-4 text-primary" /> Exklusive Restaurant-Deals</li>
                 <li className="flex items-center gap-2"><Check className="w-4 h-4 text-primary" /> Priorisierter Support</li>
               </ul>
-              <Button onClick={() => handlePlanSelect("annual")} className="w-full h-12 text-base font-semibold">
+              <Button onClick={() => handlePlanSelect("annual")} className="w-full h-12 text-base font-semibold transition-all duration-200 hover:bg-primary-foreground hover:text-primary hover:border hover:border-primary">
                 Jetzt starten
               </Button>
             </CardContent>
