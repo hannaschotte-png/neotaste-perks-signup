@@ -9,6 +9,10 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { useToast } from "@/hooks/use-toast";
 import { Check, Building2, Users, Mail, Phone, MessageSquare, Star, Briefcase, QrCode, Sparkles } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import AnimatedSection from "@/components/AnimatedSection";
+import TrustSection from "@/components/TrustSection";
+import FAQSection from "@/components/FAQSection";
+import StickyCTA from "@/components/StickyCTA";
 
 type PlanType = "monthly" | "annual";
 
@@ -53,7 +57,6 @@ const Index = () => {
 
     setSubmitting(true);
     try {
-      // Save to database
       const { error: dbError } = await supabase.from("corporate_leads").insert({
         plan_type: selectedPlan,
         company_name: formData.company_name,
@@ -67,7 +70,6 @@ const Index = () => {
 
       if (dbError) throw dbError;
 
-      // Send emails via edge function
       await supabase.functions.invoke("send-lead-emails", {
         body: {
           plan_type: selectedPlan,
@@ -128,10 +130,10 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pb-20 md:pb-0">
       {/* Hero */}
       <header className="pt-8 pb-10 px-4">
-        <div className="max-w-4xl mx-auto text-center space-y-6">
+        <AnimatedSection className="max-w-4xl mx-auto text-center space-y-6">
           <div className="flex justify-center">
             <img src="/neotaste-logo.png" alt="Neotaste" className="h-40 w-40 object-contain" />
           </div>
@@ -147,70 +149,79 @@ const Index = () => {
             Bieten Sie Ihren Mitarbeitern exklusive Restaurant-Deals und kulinarische Erlebnisse –
             der moderne Benefit, der wirklich begeistert.
           </p>
-        </div>
+        </AnimatedSection>
       </header>
+
+      {/* Trust Stats */}
+      <TrustSection />
 
       {/* Pricing Cards */}
       <section className="px-4 pb-24">
         <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8 items-end">
           {/* Monthly */}
-          <Card className="bg-card border-border relative overflow-hidden">
-            <CardHeader className="pb-2 pt-8 px-8">
-              <CardTitle className="text-lg font-extrabold text-muted-foreground">Monatliches Abo</CardTitle>
-            </CardHeader>
-            <CardContent className="px-8 pb-8 space-y-6">
-              <div>
-                <span className="text-5xl font-extrabold">4,99€</span>
-                <span className="text-muted-foreground ml-2">/ Mitarbeiter / Monat</span>
-              </div>
-              <ul className="space-y-3 text-sm">
-                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-primary" /> Flexibel, monatlich kündbar</li>
-                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-primary" /> Sofortiger Zugang für alle</li>
-                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-primary" /> Exklusive Restaurant-Deals</li>
-              </ul>
-              <Button onClick={() => handlePlanSelect("monthly")} variant="outline" className="w-full h-12 text-base font-semibold">
-                Jetzt starten
-              </Button>
-            </CardContent>
-          </Card>
+          <AnimatedSection delay={0.1}>
+            <Card className="bg-card border-border relative overflow-hidden">
+              <CardHeader className="pb-2 pt-8 px-8">
+                <CardTitle className="text-lg font-extrabold text-muted-foreground">Monatliches Abo</CardTitle>
+              </CardHeader>
+              <CardContent className="px-8 pb-8 space-y-6">
+                <div>
+                  <span className="text-5xl font-extrabold">4,99€</span>
+                  <span className="text-muted-foreground ml-2">/ Mitarbeiter / Monat</span>
+                </div>
+                <ul className="space-y-3 text-sm">
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-primary" /> Flexibel, monatlich kündbar</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-primary" /> Sofortiger Zugang für alle</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-primary" /> Exklusive Restaurant-Deals</li>
+                </ul>
+                <Button onClick={() => handlePlanSelect("monthly")} variant="outline" className="w-full h-12 text-base font-semibold">
+                  Jetzt starten
+                </Button>
+              </CardContent>
+            </Card>
+          </AnimatedSection>
 
           {/* Annual – highlighted */}
-          <Card className="bg-card border-primary border-2 relative overflow-hidden shadow-[0_0_40px_-10px_hsl(152,69%,53%,0.3)]">
-            <div className="absolute top-0 right-0">
-              <Badge className="rounded-none rounded-bl-lg bg-primary text-primary-foreground px-4 py-1.5 text-sm font-semibold flex items-center gap-1">
-                <Star className="w-3.5 h-3.5" /> Empfohlen
-              </Badge>
-            </div>
-            <CardHeader className="pb-2 pt-8 px-8">
-              <CardTitle className="text-lg font-extrabold text-muted-foreground">Jahres-Abo</CardTitle>
-            </CardHeader>
-            <CardContent className="px-8 pb-8 space-y-6">
-              <div>
-                <span className="text-5xl font-extrabold">3,99€</span>
-                <span className="text-muted-foreground ml-2">/ Mitarbeiter / Monat</span>
+          <AnimatedSection delay={0.25}>
+            <Card className="bg-card border-primary border-2 relative overflow-hidden shadow-[0_0_40px_-10px_hsl(152,69%,53%,0.3)]">
+              <div className="absolute top-0 right-0">
+                <Badge className="rounded-none rounded-bl-lg bg-primary text-primary-foreground px-4 py-1.5 text-sm font-semibold flex items-center gap-1">
+                  <Star className="w-3.5 h-3.5" /> Empfohlen
+                </Badge>
               </div>
-              <p className="text-sm text-muted-foreground">
-                47,88€ pro Mitarbeiter/Jahr –{" "}
-                <span className="text-primary font-bold">20% Ersparnis</span>
-              </p>
-              <ul className="space-y-3 text-sm">
-                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-primary" /> Bester Preis garantiert</li>
-                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-primary" /> Sofortiger Zugang für alle</li>
-                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-primary" /> Exklusive Restaurant-Deals</li>
-                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-primary" /> Priorisierter Support</li>
-              </ul>
-              <Button onClick={() => handlePlanSelect("annual")} className="w-full h-12 text-base font-semibold transition-all duration-200 hover:bg-primary-foreground hover:text-primary hover:border hover:border-primary">
-                Jetzt starten
-              </Button>
-            </CardContent>
-          </Card>
+              <CardHeader className="pb-2 pt-8 px-8">
+                <CardTitle className="text-lg font-extrabold text-muted-foreground">Jahres-Abo</CardTitle>
+              </CardHeader>
+              <CardContent className="px-8 pb-8 space-y-6">
+                <div>
+                  <span className="text-5xl font-extrabold">3,99€</span>
+                  <span className="text-muted-foreground ml-2">/ Mitarbeiter / Monat</span>
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  47,88€ pro Mitarbeiter/Jahr –{" "}
+                  <span className="text-primary font-bold">20% Ersparnis</span>
+                </p>
+                <ul className="space-y-3 text-sm">
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-primary" /> Bester Preis garantiert</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-primary" /> Sofortiger Zugang für alle</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-primary" /> Exklusive Restaurant-Deals</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-primary" /> Priorisierter Support</li>
+                </ul>
+                <Button onClick={() => handlePlanSelect("annual")} className="w-full h-12 text-base font-semibold transition-all duration-200 hover:bg-primary-foreground hover:text-primary hover:border hover:border-primary">
+                  Jetzt starten
+                </Button>
+              </CardContent>
+            </Card>
+          </AnimatedSection>
         </div>
       </section>
 
       {/* So funktioniert's */}
       <section className="px-4 pb-24">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-14 font-display">So funktioniert's</h2>
+          <AnimatedSection>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-14 font-display">So funktioniert's</h2>
+          </AnimatedSection>
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
@@ -231,22 +242,27 @@ const Index = () => {
                 title: "Genießen & sparen",
                 description: "Mitarbeiter sparen bei tollen Restaurants – z.B. beim Lunch in der Mittagspause.",
               },
-            ].map(({ step, icon: Icon, title, description }) => (
-              <Card key={step} className="bg-card border-border/50 border p-8 text-center relative overflow-hidden shadow-2xl shadow-black/40 hover:shadow-[0_20px_60px_-10px_rgba(0,0,0,0.5)] transition-all duration-300 hover:-translate-y-1">
-                <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-primary/80 to-primary/30" />
-                <CardContent className="flex flex-col items-center space-y-5 pt-4 px-0 pb-0">
-                  <div className="w-14 h-14 rounded-xl bg-primary/15 flex items-center justify-center text-primary font-extrabold text-xl font-display">
-                    {step}
-                  </div>
-                  <Icon className="w-8 h-8 text-primary" />
-                  <h3 className="text-2xl font-extrabold font-display">{title}</h3>
-                  <p className="text-base text-muted-foreground leading-relaxed">{description}</p>
-                </CardContent>
-              </Card>
+            ].map(({ step, icon: Icon, title, description }, i) => (
+              <AnimatedSection key={step} delay={i * 0.15}>
+                <Card className="bg-card border-border/50 border p-8 text-center relative overflow-hidden shadow-2xl shadow-black/40 hover:shadow-[0_20px_60px_-10px_rgba(0,0,0,0.5)] transition-all duration-300 hover:-translate-y-1">
+                  <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-primary/80 to-primary/30" />
+                  <CardContent className="flex flex-col items-center space-y-5 pt-4 px-0 pb-0">
+                    <div className="w-14 h-14 rounded-xl bg-primary/15 flex items-center justify-center text-primary font-extrabold text-xl font-display">
+                      {step}
+                    </div>
+                    <Icon className="w-8 h-8 text-primary" />
+                    <h3 className="text-2xl font-extrabold font-display">{title}</h3>
+                    <p className="text-base text-muted-foreground leading-relaxed">{description}</p>
+                  </CardContent>
+                </Card>
+              </AnimatedSection>
             ))}
           </div>
         </div>
       </section>
+
+      {/* FAQ */}
+      <FAQSection />
 
       {/* Dialog Form */}
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
@@ -296,6 +312,9 @@ const Index = () => {
           </form>
         </DialogContent>
       </Dialog>
+
+      {/* Sticky Mobile CTA */}
+      {!dialogOpen && <StickyCTA onClick={() => handlePlanSelect("annual")} />}
     </div>
   );
 };
