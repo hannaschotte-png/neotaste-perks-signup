@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
-import { Check, Building2, Users, Mail, Phone, MessageSquare, Star, Send, Utensils } from "lucide-react";
+import { Check, Building2, Users, Mail, Phone, MessageSquare, Star, Briefcase, QrCode, Sparkles } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 
 type PlanType = "monthly" | "annual";
@@ -215,19 +215,19 @@ const Index = () => {
             {[
               {
                 step: 1,
-                icon: Building2,
+                icon: Briefcase,
                 title: "Company anmelden",
                 description: "Füllen Sie das Formular aus und wir richten alles für Sie ein.",
               },
               {
                 step: 2,
-                icon: Send,
+                icon: QrCode,
                 title: "Codes verteilen",
                 description: "Stellen Sie Ihren Mitarbeitern die Zugangscodes zur Verfügung.",
               },
               {
                 step: 3,
-                icon: Utensils,
+                icon: Sparkles,
                 title: "Genießen & sparen",
                 description: "Mitarbeiter sparen bei tollen Restaurants – z.B. beim Lunch in der Mittagspause.",
               },
