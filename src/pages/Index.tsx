@@ -133,7 +133,7 @@ const Index = () => {
       <header className="pt-16 pb-24 px-4">
         <div className="max-w-4xl mx-auto text-center space-y-10">
           <div className="flex justify-center">
-            <img src="/neotaste-logo.png" alt="Neotaste" className="h-24 w-24 object-contain" />
+            <img src="/neotaste-logo.png" alt="Neotaste" className="h-40 w-40 object-contain" />
           </div>
           <div className="space-y-4">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-none">
