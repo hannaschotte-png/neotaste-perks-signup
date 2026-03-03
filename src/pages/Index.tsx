@@ -13,6 +13,8 @@ import AnimatedSection from "@/components/AnimatedSection";
 import TrustSection from "@/components/TrustSection";
 import FAQSection from "@/components/FAQSection";
 import StickyCTA from "@/components/StickyCTA";
+import FloatingParticles from "@/components/FloatingParticles";
+import TypewriterText from "@/components/TypewriterText";
 
 type PlanType = "monthly" | "annual";
 
@@ -132,17 +134,23 @@ const Index = () => {
   return (
     <div className="min-h-screen pb-20 md:pb-0 mesh-gradient">
       {/* Hero */}
-      <header className="pt-8 pb-10 px-4">
-        <AnimatedSection className="max-w-4xl mx-auto text-center space-y-6">
+      <header className="pt-8 pb-10 px-4 relative overflow-hidden">
+        <FloatingParticles />
+        <AnimatedSection className="max-w-4xl mx-auto text-center space-y-6 relative z-10">
           <div className="flex justify-center">
-            <img src="/neotaste-logo.png" alt="Neotaste" className="h-40 w-40 object-contain" />
+            <div className="relative">
+              <div className="absolute inset-0 -m-4 rounded-full bg-primary/10 animate-[pulse_3s_ease-in-out_infinite]" />
+              <div className="absolute inset-0 -m-8 rounded-full border border-primary/20 animate-[pulse_4s_ease-in-out_infinite_0.5s]" />
+              <div className="absolute inset-0 -m-12 rounded-full border border-primary/10 animate-[pulse_5s_ease-in-out_infinite_1s]" />
+              <img src="/neotaste-logo.png" alt="Neotaste" className="h-40 w-40 object-contain relative z-10" />
+            </div>
           </div>
           <div className="space-y-4">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-none">
               <span className="text-primary">Neotaste</span>
             </h1>
-            <p className="text-2xl md:text-3xl font-bold text-muted-foreground">
-              als Corporate Benefit für Ihr Team
+            <p className="text-2xl md:text-3xl font-bold text-muted-foreground h-[1.5em]">
+              <TypewriterText text="als Corporate Benefit für Ihr Team" speed={45} delay={600} />
             </p>
           </div>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
