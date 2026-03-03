@@ -130,8 +130,8 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <header className="pt-16 pb-24 px-4">
-        <div className="max-w-4xl mx-auto text-center space-y-10">
+      <header className="pt-8 pb-24 px-4">
+        <div className="max-w-4xl mx-auto text-center space-y-6">
           <div className="flex justify-center">
             <img src="/neotaste-logo.png" alt="Neotaste" className="h-40 w-40 object-contain" />
           </div>
