@@ -135,15 +135,9 @@ const Index = () => {
     <div className="min-h-screen pb-20 md:pb-0 mesh-gradient">
       {/* Hero */}
       <header className="pt-8 pb-10 px-4 relative overflow-hidden">
-        <FloatingParticles />
         <AnimatedSection className="max-w-4xl mx-auto text-center space-y-6 relative z-10">
           <div className="flex justify-center">
-            <div className="relative">
-              <div className="absolute inset-0 -m-4 rounded-full bg-primary/10 animate-[pulse_3s_ease-in-out_infinite]" />
-              <div className="absolute inset-0 -m-8 rounded-full border border-primary/20 animate-[pulse_4s_ease-in-out_infinite_0.5s]" />
-              <div className="absolute inset-0 -m-12 rounded-full border border-primary/10 animate-[pulse_5s_ease-in-out_infinite_1s]" />
-              <img src="/neotaste-logo.png" alt="Neotaste" className="h-40 w-40 object-contain relative z-10" />
-            </div>
+            <img src="/neotaste-logo.png" alt="Neotaste" className="h-40 w-40 object-contain" />
           </div>
           <div className="space-y-4">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-none">
