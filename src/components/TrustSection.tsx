@@ -4,7 +4,7 @@ import AnimatedSection from "./AnimatedSection";
 import { Utensils, Users, Star } from "lucide-react";
 
 const stats = [
-  { icon: Utensils, value: 500, suffix: "+", label: "Partnerrestaurants" },
+  { icon: Utensils, value: 3000, suffix: "+", label: "Partnerrestaurants" },
   { icon: Users, value: 2000000, suffix: "+", label: "Zufriedene Nutzer", format: true },
   { icon: Star, value: 4.8, suffix: " ★", label: "App-Bewertung", decimal: true },
 ];
