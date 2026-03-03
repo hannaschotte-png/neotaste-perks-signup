@@ -152,9 +152,6 @@ const Index = () => {
         </AnimatedSection>
       </header>
 
-      {/* Trust Stats */}
-      <TrustSection />
-
       {/* Pricing Cards */}
       <section className="px-4 pb-24">
         <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8 items-end">
@@ -263,6 +260,9 @@ const Index = () => {
 
       {/* FAQ */}
       <FAQSection />
+
+      {/* Trust Stats */}
+      <TrustSection />
 
       {/* Dialog Form */}
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
