@@ -139,11 +139,11 @@ const Index = () => {
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-none">
               <span className="text-primary">Neotaste</span>
             </h1>
-            <p className="text-2xl md:text-3xl font-bold text-muted-foreground font-display">
+            <p className="text-2xl md:text-3xl font-bold text-muted-foreground">
               als Corporate Benefit für Ihr Team
             </p>
           </div>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed font-display">
             Bieten Sie Ihren Mitarbeitern exklusive Restaurant-Deals und kulinarische Erlebnisse –
             der moderne Benefit, der wirklich begeistert.
           </p>
