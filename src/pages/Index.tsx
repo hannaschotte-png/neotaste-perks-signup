@@ -235,7 +235,7 @@ const Index = () => {
               <Card key={step} className="bg-card border-border/50 border p-8 text-center relative overflow-hidden shadow-lg shadow-black/20 hover:shadow-xl hover:shadow-black/30 transition-all duration-300 hover:-translate-y-1">
                 <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-primary/80 to-primary/30" />
                 <CardContent className="flex flex-col items-center space-y-5 pt-4 px-0 pb-0">
-                  <div className="w-14 h-14 rounded-xl bg-primary/15 flex items-center justify-center text-primary font-extrabold text-xl">
+                  <div className="w-14 h-14 rounded-xl bg-primary/15 flex items-center justify-center text-primary font-extrabold text-xl font-display">
                     {step}
                   </div>
                   <Icon className="w-8 h-8 text-primary" />
