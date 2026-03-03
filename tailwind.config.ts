@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ["'Fredoka'", "sans-serif"],
+        display: ["'Kaio Super'", "'Fredoka'", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
