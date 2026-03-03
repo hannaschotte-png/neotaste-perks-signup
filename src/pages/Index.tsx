@@ -133,10 +133,10 @@ const Index = () => {
       <header className="pt-16 pb-24 px-4">
         <div className="max-w-4xl mx-auto text-center space-y-10">
           <div className="flex justify-center">
-            <img src="/neotaste-logo.png" alt="Neotaste" className="h-24 w-24" />
+            <img src="/neotaste-logo.png" alt="Neotaste" className="h-24 w-24 object-contain" />
           </div>
           <div className="space-y-4">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-none">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-none font-display">
               <span className="text-primary">Neotaste</span>
             </h1>
             <p className="text-2xl md:text-3xl font-semibold text-muted-foreground">
@@ -210,8 +210,8 @@ const Index = () => {
       {/* So funktioniert's */}
       <section className="px-4 pb-24">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-16">So funktioniert's</h2>
-          <div className="grid md:grid-cols-3 gap-12">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-12 font-display">So funktioniert's</h2>
+          <div className="grid md:grid-cols-3 gap-6">
             {[
               {
                 step: 1,
@@ -232,14 +232,17 @@ const Index = () => {
                 description: "Jeder Mitarbeiter hat Neotaste auf der App und spart bei tollen Restaurants – z.B. beim Lunch in der Mittagspause.",
               },
             ].map(({ step, icon: Icon, title, description }) => (
-              <div key={step} className="flex flex-col items-center text-center space-y-4">
-                <div className="w-14 h-14 rounded-full bg-primary/15 flex items-center justify-center text-primary font-bold text-lg">
-                  {step}
-                </div>
-                <Icon className="w-7 h-7 text-primary" />
-                <h3 className="text-xl font-bold">{title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{description}</p>
-              </div>
+              <Card key={step} className="bg-card border-border p-6 text-center relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary/60 to-primary/20" />
+                <CardContent className="flex flex-col items-center space-y-4 pt-4 px-0 pb-0">
+                  <div className="w-12 h-12 rounded-xl bg-primary/15 flex items-center justify-center text-primary font-extrabold text-lg">
+                    {step}
+                  </div>
+                  <Icon className="w-6 h-6 text-primary" />
+                  <h3 className="text-lg font-bold">{title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
