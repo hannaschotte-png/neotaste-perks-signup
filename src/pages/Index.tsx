@@ -229,7 +229,7 @@ const Index = () => {
                 step: 3,
                 icon: Utensils,
                 title: "Genießen & sparen",
-                description: "Jeder Mitarbeiter hat Neotaste auf der App und spart bei tollen Restaurants – z.B. beim Lunch in der Mittagspause.",
+                description: "Mitarbeiter sparen bei tollen Restaurants – z.B. beim Lunch in der Mittagspause.",
               },
             ].map(({ step, icon: Icon, title, description }) => (
               <Card key={step} className="bg-card border-border/50 border p-8 text-center relative overflow-hidden shadow-lg shadow-black/20 hover:shadow-xl hover:shadow-black/30 transition-all duration-300 hover:-translate-y-1">
