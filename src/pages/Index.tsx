@@ -136,10 +136,10 @@ const Index = () => {
             <img src="/neotaste-logo.png" alt="Neotaste" className="h-24 w-24 object-contain" />
           </div>
           <div className="space-y-4">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-none font-display">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-none">
               <span className="text-primary">Neotaste</span>
             </h1>
-            <p className="text-2xl md:text-3xl font-semibold text-muted-foreground">
+            <p className="text-2xl md:text-3xl font-bold text-muted-foreground font-display">
               als Corporate Benefit für Ihr Team
             </p>
           </div>
