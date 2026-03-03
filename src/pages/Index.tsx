@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
-import { Check, Building2, Users, Mail, Phone, MessageSquare, Star } from "lucide-react";
+import { Check, Building2, Users, Mail, Phone, MessageSquare, Star, Send, Utensils } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 
 type PlanType = "monthly" | "annual";
@@ -133,7 +133,7 @@ const Index = () => {
       <header className="pt-16 pb-24 px-4">
         <div className="max-w-4xl mx-auto text-center space-y-10">
           <div className="flex justify-center">
-            <img src="/neotaste-logo.png" alt="Neotaste" className="h-14 w-14" />
+            <img src="/neotaste-logo.png" alt="Neotaste" className="h-24 w-24" />
           </div>
           <div className="space-y-4">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-none">
@@ -204,6 +204,44 @@ const Index = () => {
               </Button>
             </CardContent>
           </Card>
+        </div>
+      </section>
+
+      {/* So funktioniert's */}
+      <section className="px-4 pb-24">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-16">So funktioniert's</h2>
+          <div className="grid md:grid-cols-3 gap-12">
+            {[
+              {
+                step: 1,
+                icon: Building2,
+                title: "Company anmelden",
+                description: "Füllen Sie das Formular aus und wir richten alles für Sie ein.",
+              },
+              {
+                step: 2,
+                icon: Send,
+                title: "Codes verteilen",
+                description: "Stellen Sie Ihren Mitarbeitern die Zugangscodes zur Verfügung.",
+              },
+              {
+                step: 3,
+                icon: Utensils,
+                title: "Genießen & sparen",
+                description: "Jeder Mitarbeiter hat Neotaste auf der App und spart bei tollen Restaurants – z.B. beim Lunch in der Mittagspause.",
+              },
+            ].map(({ step, icon: Icon, title, description }) => (
+              <div key={step} className="flex flex-col items-center text-center space-y-4">
+                <div className="w-14 h-14 rounded-full bg-primary/15 flex items-center justify-center text-primary font-bold text-lg">
+                  {step}
+                </div>
+                <Icon className="w-7 h-7 text-primary" />
+                <h3 className="text-xl font-bold">{title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{description}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
