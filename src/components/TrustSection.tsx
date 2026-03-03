@@ -5,7 +5,7 @@ import { Utensils, Users, Star } from "lucide-react";
 
 const stats = [
   { icon: Utensils, value: 500, suffix: "+", label: "Partnerrestaurants" },
-  { icon: Users, value: 50000, suffix: "+", label: "Zufriedene Nutzer", format: true },
+  { icon: Users, value: 2000000, suffix: "+", label: "Zufriedene Nutzer", format: true },
   { icon: Star, value: 4.8, suffix: " ★", label: "App-Bewertung", decimal: true },
 ];
 
