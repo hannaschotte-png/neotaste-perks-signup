@@ -148,8 +148,7 @@ const Index = () => {
             </p>
           </div>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Bieten Sie Ihren Mitarbeitern exklusive Restaurant-Deals und kulinarische Erlebnisse –
-            der moderne Benefit, der wirklich begeistert.
+            Der moderne Benefit für die Mittagspause – bieten Sie Ihren Mitarbeitern exklusive Restaurant-Deals und kulinarische Erlebnisse.
           </p>
         </AnimatedSection>
       </header>
