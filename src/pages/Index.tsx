@@ -219,7 +219,7 @@ const Index = () => {
           <AnimatedSection>
             <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-14 font-display">So funktioniert's</h2>
           </AnimatedSection>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 items-stretch">
             {[
               {
                 step: 1,
@@ -241,9 +241,9 @@ const Index = () => {
               },
             ].map(({ step, icon: Icon, title, description }, i) => (
               <AnimatedSection key={step} delay={i * 0.15}>
-                <Card className="bg-card border-border/50 border p-8 text-center relative overflow-hidden shadow-2xl shadow-black/40 hover:shadow-[0_20px_60px_-10px_rgba(0,0,0,0.5)] transition-all duration-300 hover:-translate-y-1">
+                <Card className="bg-card border-border/50 border p-8 text-center relative overflow-hidden shadow-2xl shadow-black/40 hover:shadow-[0_20px_60px_-10px_rgba(0,0,0,0.5)] transition-all duration-300 hover:-translate-y-1 h-full flex flex-col">
                   <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-primary/80 to-primary/30" />
-                  <CardContent className="flex flex-col items-center space-y-5 pt-4 px-0 pb-0">
+                  <CardContent className="flex flex-col items-center space-y-5 pt-4 px-0 pb-0 flex-1">
                     <div className="w-14 h-14 rounded-xl bg-primary/15 flex items-center justify-center text-primary font-extrabold text-xl font-display">
                       {step}
                     </div>
