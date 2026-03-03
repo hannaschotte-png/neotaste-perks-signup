@@ -143,7 +143,7 @@ const Index = () => {
               als Corporate Benefit für Ihr Team
             </p>
           </div>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed font-display">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Bieten Sie Ihren Mitarbeitern exklusive Restaurant-Deals und kulinarische Erlebnisse –
             der moderne Benefit, der wirklich begeistert.
           </p>
@@ -156,7 +156,7 @@ const Index = () => {
           {/* Monthly */}
           <Card className="bg-card border-border relative overflow-hidden">
             <CardHeader className="pb-2 pt-8 px-8">
-              <CardTitle className="text-lg font-semibold text-muted-foreground">Monatliches Abo</CardTitle>
+              <CardTitle className="text-lg font-extrabold text-muted-foreground">Monatliches Abo</CardTitle>
             </CardHeader>
             <CardContent className="px-8 pb-8 space-y-6">
               <div>
@@ -182,7 +182,7 @@ const Index = () => {
               </Badge>
             </div>
             <CardHeader className="pb-2 pt-8 px-8">
-              <CardTitle className="text-lg font-semibold text-muted-foreground">Jahres-Abo</CardTitle>
+              <CardTitle className="text-lg font-extrabold text-muted-foreground">Jahres-Abo</CardTitle>
             </CardHeader>
             <CardContent className="px-8 pb-8 space-y-6">
               <div>
@@ -210,8 +210,8 @@ const Index = () => {
       {/* So funktioniert's */}
       <section className="px-4 pb-24">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-12 font-display">So funktioniert's</h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-14">So funktioniert's</h2>
+          <div className="grid md:grid-cols-3 gap-8">
             {[
               {
                 step: 1,
@@ -232,14 +232,14 @@ const Index = () => {
                 description: "Jeder Mitarbeiter hat Neotaste auf der App und spart bei tollen Restaurants – z.B. beim Lunch in der Mittagspause.",
               },
             ].map(({ step, icon: Icon, title, description }) => (
-              <Card key={step} className="bg-card border-border p-6 text-center relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary/60 to-primary/20" />
-                <CardContent className="flex flex-col items-center space-y-4 pt-4 px-0 pb-0">
-                  <div className="w-12 h-12 rounded-xl bg-primary/15 flex items-center justify-center text-primary font-extrabold text-lg">
+              <Card key={step} className="bg-card border-border/50 border p-8 text-center relative overflow-hidden shadow-lg shadow-black/20 hover:shadow-xl hover:shadow-black/30 transition-all duration-300 hover:-translate-y-1">
+                <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-primary/80 to-primary/30" />
+                <CardContent className="flex flex-col items-center space-y-5 pt-4 px-0 pb-0">
+                  <div className="w-14 h-14 rounded-xl bg-primary/15 flex items-center justify-center text-primary font-extrabold text-xl">
                     {step}
                   </div>
-                  <Icon className="w-6 h-6 text-primary" />
-                  <h3 className="text-lg font-bold">{title}</h3>
+                  <Icon className="w-8 h-8 text-primary" />
+                  <h3 className="text-xl font-extrabold">{title}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
                 </CardContent>
               </Card>
