@@ -210,7 +210,7 @@ const Index = () => {
       {/* So funktioniert's */}
       <section className="px-4 pb-24">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-14">So funktioniert's</h2>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-14 font-display">So funktioniert's</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
