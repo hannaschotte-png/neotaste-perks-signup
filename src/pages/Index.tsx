@@ -136,12 +136,12 @@ const Index = () => {
       {/* Hero */}
       <header className="pt-8 pb-10 px-4 relative overflow-hidden">
         <AnimatedSection className="max-w-4xl mx-auto text-center space-y-6 relative z-10">
-          <div className="flex justify-center">
-            <img src="/neotaste-logo.png" alt="Neotaste" className="h-40 w-40 object-contain" />
+          <div className="flex justify-center soft-spotlight">
+            <img src="/neotaste-logo.png" alt="Neotaste" className="h-40 w-40 object-contain relative z-10" />
           </div>
           <div className="space-y-4">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-none">
-              <span className="text-primary">Neotaste</span>
+              <span className="shimmer-text">Neotaste</span>
             </h1>
             <p className="text-2xl md:text-3xl font-bold text-muted-foreground h-[1.5em]">
               <TypewriterText text="als Corporate Benefit für Ihr Team" speed={45} delay={600} />
