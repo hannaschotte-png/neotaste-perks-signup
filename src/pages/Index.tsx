@@ -240,7 +240,7 @@ const Index = () => {
                   </div>
                   <Icon className="w-8 h-8 text-primary" />
                   <h3 className="text-2xl font-extrabold font-display">{title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
+                  <p className="text-base text-muted-foreground leading-relaxed">{description}</p>
                 </CardContent>
               </Card>
             ))}
