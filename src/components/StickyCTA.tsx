@@ -14,7 +14,7 @@ const StickyCTA = ({ onClick }: StickyCTAProps) => (
   >
     <Button
       onClick={onClick}
-      className="w-full h-14 text-base font-bold rounded-xl shadow-lg shadow-primary/30"
+      className="w-full h-14 text-base font-bold rounded-xl shadow-lg shadow-primary/30 btn-glow"
     >
       Jetzt Corporate Benefit starten
     </Button>

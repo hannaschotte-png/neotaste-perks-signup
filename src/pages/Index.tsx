@@ -130,7 +130,7 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen pb-20 md:pb-0">
+    <div className="min-h-screen pb-20 md:pb-0 mesh-gradient">
       {/* Hero */}
       <header className="pt-8 pb-10 px-4">
         <AnimatedSection className="max-w-4xl mx-auto text-center space-y-6">
@@ -153,11 +153,11 @@ const Index = () => {
       </header>
 
       {/* Pricing Cards */}
-      <section className="px-4 pb-24">
-        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8 items-end">
+      <section className="px-4 pb-24 pricing-glow">
+        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8 items-end relative z-10">
           {/* Monthly */}
           <AnimatedSection delay={0.1}>
-            <Card className="bg-card border-border relative overflow-hidden">
+            <Card className="glass-card relative overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_60px_-10px_rgba(0,0,0,0.5)]">
               <CardHeader className="pb-2 pt-8 px-8">
                 <CardTitle className="text-lg font-extrabold text-muted-foreground">Monatliches Abo</CardTitle>
               </CardHeader>
@@ -171,7 +171,7 @@ const Index = () => {
                   <li className="flex items-center gap-2"><Check className="w-4 h-4 text-primary" /> Sofortiger Zugang für alle</li>
                   <li className="flex items-center gap-2"><Check className="w-4 h-4 text-primary" /> Exklusive Restaurant-Deals</li>
                 </ul>
-                <Button onClick={() => handlePlanSelect("monthly")} variant="outline" className="w-full h-12 text-base font-semibold">
+                <Button onClick={() => handlePlanSelect("monthly")} variant="outline" className="w-full h-12 text-base font-semibold btn-glow">
                   Jetzt starten
                 </Button>
               </CardContent>
@@ -180,7 +180,7 @@ const Index = () => {
 
           {/* Annual – highlighted */}
           <AnimatedSection delay={0.25}>
-            <Card className="bg-card border-primary border-2 relative overflow-hidden shadow-[0_0_40px_-10px_hsl(152,69%,53%,0.3)]">
+            <Card className="glass-card-highlight relative overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_50px_-10px_hsl(152,69%,53%,0.35)]">
               <div className="absolute top-0 right-0">
                 <Badge className="rounded-none rounded-bl-lg bg-primary text-primary-foreground px-4 py-1.5 text-sm font-semibold flex items-center gap-1">
                   <Star className="w-3.5 h-3.5" /> Empfohlen
@@ -204,7 +204,7 @@ const Index = () => {
                   <li className="flex items-center gap-2"><Check className="w-4 h-4 text-primary" /> Exklusive Restaurant-Deals</li>
                   <li className="flex items-center gap-2"><Check className="w-4 h-4 text-primary" /> Priorisierter Support</li>
                 </ul>
-                <Button onClick={() => handlePlanSelect("annual")} className="w-full h-12 text-base font-semibold transition-all duration-200 hover:bg-primary-foreground hover:text-primary hover:border hover:border-primary">
+                <Button onClick={() => handlePlanSelect("annual")} className="w-full h-12 text-base font-semibold btn-glow transition-all duration-200 hover:bg-primary-foreground hover:text-primary hover:border hover:border-primary">
                   Jetzt starten
                 </Button>
               </CardContent>
@@ -241,8 +241,8 @@ const Index = () => {
               },
             ].map(({ step, icon: Icon, title, description }, i) => (
               <AnimatedSection key={step} delay={i * 0.15}>
-                <Card className="bg-card border-border/50 border p-8 text-center relative overflow-hidden shadow-2xl shadow-black/40 hover:shadow-[0_20px_60px_-10px_rgba(0,0,0,0.5)] transition-all duration-300 hover:-translate-y-1 h-full flex flex-col">
-                  <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-primary/80 to-primary/30" />
+                <Card className="glass-card rounded-2xl p-8 text-center relative overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_60px_-10px_rgba(0,0,0,0.5)] h-full flex flex-col group">
+                  <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-primary/80 to-primary/30 transition-all duration-300 group-hover:h-2 group-hover:from-primary group-hover:to-primary/50" />
                   <CardContent className="flex flex-col items-center space-y-5 pt-4 px-0 pb-0 flex-1">
                     <div className="w-14 h-14 rounded-xl bg-primary/15 flex items-center justify-center text-primary font-extrabold text-xl font-display">
                       {step}
