@@ -138,16 +138,10 @@ const Index = () => {
                   </div>
 
                   <Button
-                    variant="outline"
-                    className="w-full h-12 text-base font-semibold rounded-xl border-border hover:border-primary/50 hover:bg-primary/5 transition-all duration-300"
+                    className="w-full h-12 text-base font-semibold rounded-xl bg-primary text-primary-foreground hover:bg-primary/80 transition-all duration-300"
                   >
                     Codes generieren
-                    <motion.span
-                      className="inline-flex"
-                      whileHover={{ x: 4 }}
-                    >
-                      <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                    </motion.span>
+                    <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </div>
               </TiltCard>
@@ -218,7 +212,7 @@ const Index = () => {
                   </div>
 
                   <Button
-                    className="w-full h-12 text-base font-semibold rounded-xl bg-primary text-primary-foreground hover:bg-foreground hover:text-background transition-all duration-300 shadow-[0_0_20px_hsla(152,69%,53%,0.3)] hover:shadow-[0_0_30px_hsla(152,69%,53%,0.5)]"
+                    className="w-full h-12 text-base font-semibold rounded-xl bg-[hsl(152,40%,15%)] text-primary-foreground hover:bg-[hsl(152,40%,10%)] transition-all duration-300 shadow-[0_0_20px_hsla(152,69%,53%,0.2)] hover:shadow-[0_0_30px_hsla(152,69%,53%,0.4)]"
                   >
                     Benefit einrichten
                     <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
