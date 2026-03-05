@@ -31,24 +31,26 @@ const Index = () => {
       <section className="px-4 pb-20 flex-1">
         <div className="max-w-5xl mx-auto">
           {/* Two distinct paths */}
-          <div className="grid md:grid-cols-2 gap-0 md:gap-0 items-stretch">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-10 items-stretch">
             
             {/* LEFT: Rabatte - Clean, simple, approachable */}
             <AnimatedSection delay={0.1}>
               <div 
                 onClick={() => navigate("/rabatte")}
-                className="group cursor-pointer h-full border border-border/50 md:rounded-l-3xl md:rounded-r-none rounded-t-3xl md:rounded-tr-none bg-card/40 backdrop-blur-sm hover:bg-card/60 transition-all duration-500 relative overflow-hidden"
+                className="group cursor-pointer h-full border border-border/50 rounded-3xl bg-card/40 backdrop-blur-sm hover:bg-card/60 transition-all duration-500 relative overflow-hidden"
               >
-                {/* Subtle left accent */}
-                <div className="absolute left-0 top-0 bottom-0 w-1 bg-muted-foreground/20 group-hover:bg-primary/50 transition-colors duration-500" />
-                
                 <div className="p-8 md:p-10 flex flex-col h-full">
                   {/* Label */}
-                  <div className="flex items-center gap-2 mb-8">
+                  <div className="flex items-center gap-2 mb-4">
                     <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center">
                       <Percent className="w-5 h-5 text-muted-foreground" />
                     </div>
-                    <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Kostenlos</span>
+                    <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Option A</span>
+                  </div>
+
+                  {/* Free badge */}
+                  <div className="inline-flex self-start items-center gap-1.5 bg-primary/15 border border-primary/30 text-primary px-3 py-1 rounded-full text-xs font-bold mb-6">
+                    100% Kostenlos
                   </div>
 
                   {/* Title */}
@@ -107,11 +109,11 @@ const Index = () => {
             <AnimatedSection delay={0.2}>
               <div 
                 onClick={() => navigate("/corporate-benefit")}
-                className="group cursor-pointer h-full md:rounded-r-3xl md:rounded-l-none rounded-b-3xl md:rounded-bl-none relative overflow-hidden transition-all duration-500 hover:shadow-[0_0_60px_hsla(152,69%,53%,0.15)]"
+                className="group cursor-pointer h-full rounded-3xl relative overflow-hidden transition-all duration-500 hover:shadow-[0_0_60px_hsla(152,69%,53%,0.15)]"
               >
                 {/* Premium gradient background */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5" />
-                <div className="absolute inset-0 border-2 border-primary/30 md:rounded-r-3xl md:rounded-l-none rounded-b-3xl md:rounded-bl-none group-hover:border-primary/60 transition-colors duration-500" />
+                <div className="absolute inset-0 border-2 border-primary/30 rounded-3xl group-hover:border-primary/60 transition-colors duration-500" />
                 
                 <div className="relative p-8 md:p-10 flex flex-col h-full">
                   {/* Label */}
