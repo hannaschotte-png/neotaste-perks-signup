@@ -37,18 +37,20 @@ const Index = () => {
             <AnimatedSection delay={0.1}>
               <div 
                 onClick={() => navigate("/rabatte")}
-                className="group cursor-pointer h-full border border-border/50 md:rounded-l-3xl md:rounded-r-none rounded-t-3xl md:rounded-tr-none bg-card/40 backdrop-blur-sm hover:bg-card/60 transition-all duration-500 relative overflow-hidden"
+                className="group cursor-pointer h-full border border-border/50 rounded-3xl bg-card/40 backdrop-blur-sm hover:bg-card/60 transition-all duration-500 relative overflow-hidden"
               >
-                {/* Subtle left accent */}
-                <div className="absolute left-0 top-0 bottom-0 w-1 bg-muted-foreground/20 group-hover:bg-primary/50 transition-colors duration-500" />
-                
                 <div className="p-8 md:p-10 flex flex-col h-full">
                   {/* Label */}
-                  <div className="flex items-center gap-2 mb-8">
+                  <div className="flex items-center gap-2 mb-4">
                     <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center">
                       <Percent className="w-5 h-5 text-muted-foreground" />
                     </div>
-                    <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Kostenlos</span>
+                    <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Option A</span>
+                  </div>
+
+                  {/* Free badge */}
+                  <div className="inline-flex self-start items-center gap-1.5 bg-primary/15 border border-primary/30 text-primary px-3 py-1 rounded-full text-xs font-bold mb-6">
+                    100% Kostenlos
                   </div>
 
                   {/* Title */}
