@@ -31,7 +31,7 @@ const Index = () => {
       <section className="px-4 pb-20 flex-1">
         <div className="max-w-5xl mx-auto">
           {/* Two distinct paths */}
-          <div className="grid md:grid-cols-2 gap-0 md:gap-0 items-stretch">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-10 items-stretch">
             
             {/* LEFT: Rabatte - Clean, simple, approachable */}
             <AnimatedSection delay={0.1}>
