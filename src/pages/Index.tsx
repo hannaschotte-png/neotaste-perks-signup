@@ -160,7 +160,8 @@ const Index = () => {
 
                   {/* Price */}
                   <div className="mb-6">
-                    <span className="text-3xl font-extrabold text-foreground">3,99 €</span>
+                    <span className="text-sm text-muted-foreground">ab</span>
+                    <span className="text-3xl font-extrabold text-foreground ml-1">3,99 €</span>
                     <span className="text-sm text-muted-foreground ml-1">/ Mitarbeiter / Monat</span>
                   </div>
 
