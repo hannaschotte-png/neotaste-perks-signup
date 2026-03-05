@@ -13,7 +13,7 @@ const Index = () => {
       <header className="pt-10 pb-6 px-4">
         <AnimatedSection className="max-w-3xl mx-auto text-center space-y-5">
           <div className="flex justify-center soft-spotlight">
-            <img src="/neotaste-logo.png" alt="Neotaste" className="h-28 w-28 object-contain relative z-10" />
+            <img src="/neotaste-logo.png" alt="Neotaste" className="h-40 w-40 md:h-48 md:w-48 object-contain relative z-10" />
           </div>
           <h1 className="text-4xl md:text-5xl font-extrabold leading-none">
             <span className="shimmer-text">Neotaste</span>
