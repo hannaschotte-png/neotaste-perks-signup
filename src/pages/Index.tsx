@@ -160,13 +160,14 @@ const Index = () => {
 
                   {/* Price */}
                   <div className="mb-6">
-                    <span className="text-3xl font-extrabold text-foreground">3,99 €</span>
+                    <span className="text-sm text-muted-foreground">ab</span>
+                    <span className="text-3xl font-extrabold text-foreground ml-1">3,99 €</span>
                     <span className="text-sm text-muted-foreground ml-1">/ Mitarbeiter / Monat</span>
                   </div>
 
                   {/* CTA */}
                   <Button
-                    className="w-full h-12 text-base font-semibold rounded-xl bg-primary text-primary-foreground hover:brightness-110 transition-all duration-300 shadow-[0_0_20px_hsla(152,69%,53%,0.3)] hover:shadow-[0_0_30px_hsla(152,69%,53%,0.5)]"
+                    className="w-full h-12 text-base font-semibold rounded-xl bg-primary text-primary-foreground hover:bg-foreground hover:text-background transition-all duration-300 shadow-[0_0_20px_hsla(152,69%,53%,0.3)] hover:shadow-[0_0_30px_hsla(152,69%,53%,0.5)]"
                   >
                     Benefit einrichten
                     <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
