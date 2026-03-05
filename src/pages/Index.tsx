@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Percent, Gift, ArrowRight } from "lucide-react";
+import { Percent, Gift, ArrowRight, Sparkles } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 import TypewriterText from "@/components/TypewriterText";
 
@@ -35,81 +34,116 @@ const Index = () => {
         <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8 items-stretch pricing-glow relative z-10">
           {/* Rabatte */}
           <AnimatedSection delay={0.1}>
-            <Card className="glass-card rounded-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_60px_-10px_rgba(0,0,0,0.5)] h-full flex flex-col overflow-hidden group">
-              <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-primary/60 to-primary/20 transition-all duration-300 group-hover:h-2 group-hover:from-primary group-hover:to-primary/40" />
-              <CardContent className="px-8 py-10 flex flex-col flex-1 space-y-6">
-                <div className="w-16 h-16 rounded-2xl bg-primary/15 flex items-center justify-center">
-                  <Percent className="w-8 h-8 text-primary" />
+            <div className="decision-card group h-full flex flex-col rounded-2xl p-[1px] transition-all duration-500 hover:-translate-y-2">
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative bg-card/80 backdrop-blur-xl rounded-2xl h-full flex flex-col overflow-hidden border border-border/50 group-hover:border-primary/30 transition-colors duration-500">
+                {/* Top accent line */}
+                <div className="h-1 bg-gradient-to-r from-primary/40 via-primary/60 to-primary/40 group-hover:from-primary/60 group-hover:via-primary group-hover:to-primary/60 transition-all duration-500" />
+                
+                <div className="px-8 py-10 flex flex-col flex-1 space-y-8">
+                  {/* Icon */}
+                  <div className="w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/15 group-hover:scale-110 transition-all duration-300">
+                    <Percent className="w-7 h-7 text-primary" />
+                  </div>
+
+                  {/* Title & Description */}
+                  <div className="space-y-3">
+                    <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground">
+                      Mitarbeiter-Rabatte
+                    </h2>
+                    <p className="text-muted-foreground leading-relaxed text-[15px]">
+                      Ihre Mitarbeiter erhalten exklusive Rabatt-Codes für Neotaste. Einfach Codes generieren und per Slack oder intern teilen.
+                    </p>
+                  </div>
+
+                  {/* Features */}
+                  <ul className="space-y-3 flex-1">
+                    {[
+                      "Sofort Codes generieren",
+                      "Direkt in Slack teilen",
+                      "Kein Abo notwendig",
+                    ].map((item) => (
+                      <li key={item} className="flex items-center gap-3 text-sm text-muted-foreground">
+                        <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                          <ArrowRight className="w-3 h-3 text-primary" />
+                        </div>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* CTA */}
+                  <Button
+                    onClick={() => navigate("/rabatte")}
+                    variant="outline"
+                    className="w-full h-12 text-base font-semibold rounded-xl border-primary/30 hover:bg-primary/10 hover:border-primary/50 transition-all duration-300"
+                  >
+                    Rabatte aktivieren
+                    <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                  </Button>
                 </div>
-                <div className="space-y-2">
-                  <h2 className="text-2xl md:text-3xl font-extrabold">Mitarbeiter-Rabatte</h2>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Ihre Mitarbeiter erhalten exklusive Rabatt-Codes für Neotaste. Einfach Codes generieren und per Slack oder intern teilen.
-                  </p>
-                </div>
-                <ul className="space-y-2 text-sm text-muted-foreground flex-1">
-                  <li className="flex items-center gap-2">
-                    <ArrowRight className="w-4 h-4 text-primary shrink-0" />
-                    Sofort Codes generieren
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <ArrowRight className="w-4 h-4 text-primary shrink-0" />
-                    Direkt in Slack teilen
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <ArrowRight className="w-4 h-4 text-primary shrink-0" />
-                    Kein Abo notwendig
-                  </li>
-                </ul>
-                <Button
-                  onClick={() => navigate("/rabatte")}
-                  variant="outline"
-                  className="w-full h-12 text-base font-semibold btn-glow"
-                >
-                  Rabatte aktivieren
-                </Button>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </AnimatedSection>
 
           {/* Corporate Benefit */}
           <AnimatedSection delay={0.25}>
-            <Card className="glass-card-highlight rounded-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_50px_-10px_hsl(152,69%,53%,0.35)] h-full flex flex-col overflow-hidden group relative">
-              <div className="absolute top-0 right-0 bg-primary text-primary-foreground px-4 py-1.5 text-sm font-semibold rounded-bl-lg z-10">
-                Premium
+            <div className="decision-card-premium group h-full flex flex-col rounded-2xl relative transition-all duration-500 hover:-translate-y-2">
+              {/* Glow effect */}
+              <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-b from-primary via-primary/50 to-primary/20 opacity-70 group-hover:opacity-100 transition-opacity duration-500 blur-[0.5px]" />
+              
+              <div className="relative bg-card/90 backdrop-blur-xl rounded-2xl h-full flex flex-col overflow-hidden">
+                {/* Premium badge */}
+                <div className="absolute top-4 right-4 z-10">
+                  <div className="flex items-center gap-1.5 bg-primary/20 border border-primary/30 backdrop-blur-sm text-primary px-3 py-1 rounded-full text-xs font-semibold">
+                    <Sparkles className="w-3 h-3" />
+                    Premium
+                  </div>
+                </div>
+
+                <div className="px-8 py-10 flex flex-col flex-1 space-y-8">
+                  {/* Icon */}
+                  <div className="w-14 h-14 rounded-xl bg-primary/15 border border-primary/30 flex items-center justify-center group-hover:scale-110 transition-all duration-300">
+                    <Gift className="w-7 h-7 text-primary" />
+                  </div>
+
+                  {/* Title & Description */}
+                  <div className="space-y-3">
+                    <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground">
+                      Corporate Benefit
+                    </h2>
+                    <p className="text-muted-foreground leading-relaxed text-[15px]">
+                      Neotaste als vollwertiger Benefit – Sie übernehmen die Kosten, Ihre Mitarbeiter genießen das volle Erlebnis.
+                    </p>
+                  </div>
+
+                  {/* Features */}
+                  <ul className="space-y-3 flex-1">
+                    {[
+                      "Ab 3,99€/Mitarbeiter/Monat",
+                      "Vollständiger Neotaste-Zugang",
+                      "Priorisierter Support",
+                    ].map((item) => (
+                      <li key={item} className="flex items-center gap-3 text-sm text-muted-foreground">
+                        <div className="w-5 h-5 rounded-full bg-primary/15 flex items-center justify-center shrink-0">
+                          <ArrowRight className="w-3 h-3 text-primary" />
+                        </div>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* CTA */}
+                  <Button
+                    onClick={() => navigate("/corporate-benefit")}
+                    className="w-full h-12 text-base font-semibold rounded-xl bg-primary text-primary-foreground hover:brightness-110 transition-all duration-300 shadow-[0_0_20px_hsla(152,69%,53%,0.25)] hover:shadow-[0_0_30px_hsla(152,69%,53%,0.4)]"
+                  >
+                    Benefit einrichten
+                    <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </div>
               </div>
-              <CardContent className="px-8 py-10 flex flex-col flex-1 space-y-6">
-                <div className="w-16 h-16 rounded-2xl bg-primary/15 flex items-center justify-center">
-                  <Gift className="w-8 h-8 text-primary" />
-                </div>
-                <div className="space-y-2">
-                  <h2 className="text-2xl md:text-3xl font-extrabold">Corporate Benefit</h2>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Neotaste als vollwertiger Benefit – Sie übernehmen die Kosten, Ihre Mitarbeiter genießen das volle Erlebnis.
-                  </p>
-                </div>
-                <ul className="space-y-2 text-sm text-muted-foreground flex-1">
-                  <li className="flex items-center gap-2">
-                    <ArrowRight className="w-4 h-4 text-primary shrink-0" />
-                    Ab 3,99€/Mitarbeiter/Monat
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <ArrowRight className="w-4 h-4 text-primary shrink-0" />
-                    Vollständiger Neotaste-Zugang
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <ArrowRight className="w-4 h-4 text-primary shrink-0" />
-                    Priorisierter Support
-                  </li>
-                </ul>
-                <Button
-                  onClick={() => navigate("/corporate-benefit")}
-                  className="w-full h-12 text-base font-semibold btn-glow transition-all duration-200 hover:bg-primary-foreground hover:text-primary hover:border hover:border-primary"
-                >
-                  Benefit einrichten
-                </Button>
-              </CardContent>
-            </Card>
+            </div>
           </AnimatedSection>
         </div>
       </section>
