@@ -109,11 +109,11 @@ const Index = () => {
             <AnimatedSection delay={0.2}>
               <div 
                 onClick={() => navigate("/corporate-benefit")}
-                className="group cursor-pointer h-full md:rounded-r-3xl md:rounded-l-none rounded-b-3xl md:rounded-bl-none relative overflow-hidden transition-all duration-500 hover:shadow-[0_0_60px_hsla(152,69%,53%,0.15)]"
+                className="group cursor-pointer h-full rounded-3xl relative overflow-hidden transition-all duration-500 hover:shadow-[0_0_60px_hsla(152,69%,53%,0.15)]"
               >
                 {/* Premium gradient background */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5" />
-                <div className="absolute inset-0 border-2 border-primary/30 md:rounded-r-3xl md:rounded-l-none rounded-b-3xl md:rounded-bl-none group-hover:border-primary/60 transition-colors duration-500" />
+                <div className="absolute inset-0 border-2 border-primary/30 rounded-3xl group-hover:border-primary/60 transition-colors duration-500" />
                 
                 <div className="relative p-8 md:p-10 flex flex-col h-full">
                   {/* Label */}
