@@ -224,6 +224,8 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      <TrustSection />
     </div>
   );
 };
