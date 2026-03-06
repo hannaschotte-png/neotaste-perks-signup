@@ -5,8 +5,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { ArrowLeft, Users, Copy, Check, Send, Sparkles } from "lucide-react";
+import { ArrowLeft, Users, Copy, Check, Send, Sparkles, Briefcase, QrCode, UtensilsCrossed } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
+import { motion } from "framer-motion";
 
 const generatePlaceholderCodes = (count: number): string[] => {
   const codes: string[] = [];
@@ -16,6 +17,27 @@ const generatePlaceholderCodes = (count: number): string[] => {
   }
   return codes;
 };
+
+const steps = [
+  {
+    icon: Briefcase,
+    number: "01",
+    title: "Firma anmelden",
+    description: "Geben Sie Ihren Firmennamen und die Anzahl Ihrer Mitarbeiter ein – das dauert keine 30 Sekunden.",
+  },
+  {
+    icon: QrCode,
+    number: "02",
+    title: "Codes verteilen",
+    description: "Wir generieren sofort individuelle Rabatt-Codes. Teilen Sie diese per Slack, E-Mail oder intern.",
+  },
+  {
+    icon: UtensilsCrossed,
+    number: "03",
+    title: "Team genießt",
+    description: "Ihre Mitarbeiter lösen die Codes in der Neotaste-App ein und sparen bei jedem Restaurantbesuch.",
+  },
+];
 
 const DiscountCodes = () => {
   const navigate = useNavigate();
@@ -44,7 +66,6 @@ const DiscountCodes = () => {
   };
 
   const handleShareSlack = async () => {
-    // Will be wired to Slack connector edge function
     toast({
       title: "Slack-Integration",
       description: "Die Slack-Integration wird eingerichtet. Bitte verbinden Sie zunächst Ihren Slack-Workspace.",
@@ -53,6 +74,7 @@ const DiscountCodes = () => {
 
   return (
     <div className="min-h-screen mesh-gradient pb-20">
+      {/* Header */}
       <header className="pt-8 pb-6 px-4">
         <div className="max-w-3xl mx-auto">
           <button
@@ -76,34 +98,63 @@ const DiscountCodes = () => {
         </div>
       </header>
 
+      {/* 3-Step Explanation */}
+      <section className="px-4 pb-12">
+        <div className="max-w-4xl mx-auto">
+          <AnimatedSection delay={0.05}>
+            <h2 className="text-center text-2xl md:text-3xl font-extrabold mb-8">
+              In <span className="text-primary">3 Schritten</span> zum Team-Benefit
+            </h2>
+          </AnimatedSection>
+          <div className="grid md:grid-cols-3 gap-5">
+            {steps.map((s, i) => (
+              <AnimatedSection key={i} delay={0.1 + i * 0.1}>
+                <motion.div
+                  className="group relative h-full rounded-2xl border border-border/50 bg-card/40 backdrop-blur-sm p-6 md:p-7 flex flex-col items-center text-center transition-all duration-500 hover:bg-card/60 hover:shadow-2xl hover:border-primary/30"
+                  whileHover={{ y: -4 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  {/* Hover glow */}
+                  <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(circle_at_50%_50%,hsla(152,69%,53%,0.06),transparent_70%)]" />
+
+                  {/* Number badge */}
+                  <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4 relative z-10">{s.number}</span>
+
+                  {/* Icon */}
+                  <motion.div
+                    className="w-14 h-14 rounded-2xl bg-primary/15 border border-primary/20 flex items-center justify-center mb-5 relative z-10"
+                    whileHover={{ scale: 1.1, rotate: -8 }}
+                  >
+                    <s.icon className="w-7 h-7 text-primary" />
+                  </motion.div>
+
+                  {/* Title */}
+                  <h3 className="font-display text-lg font-bold text-foreground mb-2 relative z-10">{s.title}</h3>
+
+                  {/* Description */}
+                  <p className="text-sm text-muted-foreground leading-relaxed relative z-10">{s.description}</p>
+                </motion.div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Form / Codes */}
       <section className="px-4">
         <div className="max-w-3xl mx-auto">
           {step === "input" ? (
-            <AnimatedSection delay={0.1}>
+            <AnimatedSection delay={0.4}>
               <Card className="glass-card rounded-2xl overflow-hidden">
                 <CardContent className="p-8 space-y-6">
                   <div className="flex items-center gap-3 mb-2">
                     <div className="w-10 h-10 rounded-xl bg-primary/15 flex items-center justify-center">
                       <Sparkles className="w-5 h-5 text-primary" />
                     </div>
-                    <h2 className="text-xl font-bold">So funktioniert's</h2>
-                  </div>
-                  <div className="grid md:grid-cols-3 gap-4 text-sm text-muted-foreground">
-                    <div className="flex items-start gap-3 p-4 rounded-xl bg-secondary/50">
-                      <span className="w-7 h-7 rounded-lg bg-primary/20 flex items-center justify-center text-primary font-bold text-xs shrink-0">1</span>
-                      <span>Geben Sie Ihre Firmendaten und die Mitarbeiteranzahl ein</span>
-                    </div>
-                    <div className="flex items-start gap-3 p-4 rounded-xl bg-secondary/50">
-                      <span className="w-7 h-7 rounded-lg bg-primary/20 flex items-center justify-center text-primary font-bold text-xs shrink-0">2</span>
-                      <span>Wir generieren sofort individuelle Rabatt-Codes</span>
-                    </div>
-                    <div className="flex items-start gap-3 p-4 rounded-xl bg-secondary/50">
-                      <span className="w-7 h-7 rounded-lg bg-primary/20 flex items-center justify-center text-primary font-bold text-xs shrink-0">3</span>
-                      <span>Teilen Sie die Codes direkt per Slack mit Ihrem Team</span>
-                    </div>
+                    <h2 className="text-xl font-bold">Jetzt Codes generieren</h2>
                   </div>
 
-                  <form onSubmit={handleGenerate} className="space-y-4 pt-4">
+                  <form onSubmit={handleGenerate} className="space-y-4 pt-2">
                     <div>
                       <Label htmlFor="company" className="mb-1.5 block">Firmenname *</Label>
                       <Input
