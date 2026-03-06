@@ -138,7 +138,7 @@ const Index = () => {
                   </div>
 
                   <Button
-                    className="w-full h-12 text-base font-semibold rounded-xl bg-primary text-primary-foreground hover:bg-primary/80 transition-all duration-300"
+                    className="w-full h-12 text-base font-semibold rounded-xl bg-[hsl(152,40%,15%)] text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 shadow-[0_0_20px_hsla(152,69%,53%,0.2)] hover:shadow-[0_0_30px_hsla(152,69%,53%,0.4)]"
                   >
                     Codes generieren
                     <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
