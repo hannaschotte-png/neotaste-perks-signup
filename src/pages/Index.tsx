@@ -4,6 +4,7 @@ import { Percent, ArrowRight, Users, CreditCard, Zap, Crown, Check } from "lucid
 import { motion } from "framer-motion";
 import AnimatedSection from "@/components/AnimatedSection";
 import TypewriterText from "@/components/TypewriterText";
+import TrustSection from "@/components/TrustSection";
 import { useState, useRef } from "react";
 
 const TiltCard = ({ children, className, onClick }: { children: React.ReactNode; className?: string; onClick?: () => void }) => {
@@ -223,6 +224,8 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      <TrustSection />
     </div>
   );
 };
