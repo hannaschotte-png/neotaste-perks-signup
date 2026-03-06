@@ -60,10 +60,10 @@ const Index = () => {
             <span className="shimmer-text">Neotaste</span>
           </h1>
           <p className="text-xl md:text-2xl font-bold text-muted-foreground h-[1.5em]">
-            <TypewriterText text="für Ihr Unternehmen" speed={45} delay={600} />
+            <TypewriterText text="Der Benefit für die Mittagspause" speed={45} delay={600} />
           </p>
           <p className="text-base text-muted-foreground max-w-xl mx-auto">
-            Wie möchten Sie Neotaste Ihrem Team anbieten?
+            Bieten Sie Ihrem Team exklusive Restaurant-Deals – für eine bessere Lunch-Pause, jeden Tag. Wie möchten Sie starten?
           </p>
         </AnimatedSection>
       </header>
