@@ -16,7 +16,7 @@ import StickyCTA from "@/components/StickyCTA";
 import FloatingParticles from "@/components/FloatingParticles";
 import TypewriterText from "@/components/TypewriterText";
 
-type PlanType = "monthly" | "annual";
+type PlanType = "1year" | "2year";
 
 interface FormData {
   company_name: string;
@@ -111,7 +111,7 @@ const Index = () => {
             <p>
               Wir haben Ihre Anfrage für das{" "}
               <span className="text-foreground font-semibold">
-                {selectedPlan === "monthly" ? "Monatliche Abo" : "Jahres-Abo"}
+                {selectedPlan === "1year" ? "1-Jahres-Abo" : "2-Jahres-Abo"}
               </span>{" "}
               erhalten.
             </p>
@@ -156,30 +156,33 @@ const Index = () => {
       {/* Pricing Cards */}
       <section className="px-4 pb-24 pricing-glow">
         <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8 items-end relative z-10">
-          {/* Monthly */}
+          {/* 1-Year */}
           <AnimatedSection delay={0.1}>
             <Card className="glass-card relative overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_60px_-10px_rgba(0,0,0,0.5)]">
               <CardHeader className="pb-2 pt-8 px-8">
-                <CardTitle className="text-lg font-extrabold text-muted-foreground">Monatliches Abo</CardTitle>
+                <CardTitle className="text-lg font-extrabold text-muted-foreground">1-Jahres-Abo</CardTitle>
               </CardHeader>
               <CardContent className="px-8 pb-8 space-y-6">
                 <div>
                   <span className="text-5xl font-extrabold">4,99€</span>
                   <span className="text-muted-foreground ml-2">/ Mitarbeiter / Monat</span>
                 </div>
+                <p className="text-sm text-muted-foreground">
+                  59,88€ pro Mitarbeiter/Jahr
+                </p>
                 <ul className="space-y-3 text-sm">
-                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-primary" /> Flexibel, monatlich kündbar</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-primary" /> Voller Zugriff für 12 Monate</li>
                   <li className="flex items-center gap-2"><Check className="w-4 h-4 text-primary" /> Sofortiger Zugang für alle</li>
                   <li className="flex items-center gap-2"><Check className="w-4 h-4 text-primary" /> Exklusive Restaurant-Deals</li>
                 </ul>
-                <Button onClick={() => handlePlanSelect("monthly")} variant="outline" className="w-full h-12 text-base font-semibold btn-glow">
+                <Button onClick={() => handlePlanSelect("1year")} variant="outline" className="w-full h-12 text-base font-semibold btn-glow">
                   Jetzt starten
                 </Button>
               </CardContent>
             </Card>
           </AnimatedSection>
 
-          {/* Annual – highlighted */}
+          {/* 2-Year – highlighted */}
           <AnimatedSection delay={0.25}>
             <Card className="glass-card-highlight relative overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_50px_-10px_hsl(152,69%,53%,0.35)]">
               <div className="absolute top-0 right-0">
@@ -188,7 +191,7 @@ const Index = () => {
                 </Badge>
               </div>
               <CardHeader className="pb-2 pt-8 px-8">
-                <CardTitle className="text-lg font-extrabold text-muted-foreground">Jahres-Abo</CardTitle>
+                <CardTitle className="text-lg font-extrabold text-muted-foreground">2-Jahres-Abo</CardTitle>
               </CardHeader>
               <CardContent className="px-8 pb-8 space-y-6">
                 <div>
@@ -196,16 +199,16 @@ const Index = () => {
                   <span className="text-muted-foreground ml-2">/ Mitarbeiter / Monat</span>
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  47,88€ pro Mitarbeiter/Jahr –{" "}
+                  95,76€ pro Mitarbeiter/2 Jahre –{" "}
                   <span className="text-primary font-bold">20% Ersparnis</span>
                 </p>
                 <ul className="space-y-3 text-sm">
                   <li className="flex items-center gap-2"><Check className="w-4 h-4 text-primary" /> Bester Preis garantiert</li>
-                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-primary" /> Sofortiger Zugang für alle</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-primary" /> Voller Zugriff für 24 Monate</li>
                   <li className="flex items-center gap-2"><Check className="w-4 h-4 text-primary" /> Exklusive Restaurant-Deals</li>
                   <li className="flex items-center gap-2"><Check className="w-4 h-4 text-primary" /> Priorisierter Support</li>
                 </ul>
-                <Button onClick={() => handlePlanSelect("annual")} className="w-full h-12 text-base font-semibold btn-glow transition-all duration-200 hover:bg-primary-foreground hover:text-primary hover:border hover:border-primary">
+                <Button onClick={() => handlePlanSelect("2year")} className="w-full h-12 text-base font-semibold btn-glow transition-all duration-200 hover:bg-primary-foreground hover:text-primary hover:border hover:border-primary">
                   Jetzt starten
                 </Button>
               </CardContent>
@@ -270,7 +273,7 @@ const Index = () => {
         <DialogContent className="sm:max-w-lg bg-card border-border">
           <DialogHeader>
             <DialogTitle className="text-xl">
-              Anfrage – {selectedPlan === "monthly" ? "Monatliches Abo (4,99€/Monat)" : "Jahres-Abo (3,99€/Monat)"}
+              Anfrage – {selectedPlan === "1year" ? "1-Jahres-Abo (4,99€/Monat)" : "2-Jahres-Abo (3,99€/Monat)"}
             </DialogTitle>
             <DialogDescription>
               Füllen Sie das Formular aus und unser Team meldet sich innerhalb von 24 Stunden.
@@ -315,7 +318,7 @@ const Index = () => {
       </Dialog>
 
       {/* Sticky Mobile CTA */}
-      {!dialogOpen && <StickyCTA onClick={() => handlePlanSelect("annual")} />}
+      {!dialogOpen && <StickyCTA onClick={() => handlePlanSelect("2year")} />}
     </div>
   );
 };
