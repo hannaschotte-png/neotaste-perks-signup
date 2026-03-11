@@ -225,8 +225,7 @@
               {[
                 { step: 1, icon: Briefcase, title: "Company anmelden", description: "Füllen Sie das Formular aus und wir richten alles für Sie ein." },
                 { step: 2, icon: QrCode, title: "Codes verteilen", description: "Stellen Sie Ihren Mitarbeitern die Zugangscodes zur Verfügung." },
-                { step: 3, icon: Sparkles, title: "Genießen & sparen", description: "Mitarbeiter sparen bei tollen Restaurants – z.B. beim Lunch in der
-   Mittagspause." },
+                { step: 3, icon: Sparkles, title: "Genießen & sparen", description: "Mitarbeiter sparen bei tollen Restaurants – z.B. beim Lunch in der Mittagspause." },
               ].map(({ step, icon: Icon, title, description }, i) => (
                 <AnimatedSection key={step} delay={i * 0.15}>
                   <Card className="glass-card rounded-2xl p-8 text-center relative overflow-hidden transition-all duration-300 hover:-translate-y-2
