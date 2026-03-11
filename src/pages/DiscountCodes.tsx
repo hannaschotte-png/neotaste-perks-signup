@@ -9,14 +9,7 @@ import { ArrowLeft, Users, Copy, Check, Send, Sparkles, Briefcase, QrCode, Utens
 import AnimatedSection from "@/components/AnimatedSection";
 import { motion } from "framer-motion";
 
-const generatePlaceholderCodes = (count: number): string[] => {
-  const codes: string[] = [];
-  for (let i = 0; i < count; i++) {
-    const code = `NEO-${Math.random().toString(36).substring(2, 6).toUpperCase()}-${Math.random().toString(36).substring(2, 6).toUpperCase()}`;
-    codes.push(code);
-  }
-  return codes;
-};
+const N8N_WEBHOOK = "https://hannaschotte.app.n8n.cloud/webhook/rabatt-codes";
 
 const steps = [
   {
@@ -46,15 +39,43 @@ const DiscountCodes = () => {
   const [companyName, setCompanyName] = useState("");
   const [codes, setCodes] = useState<string[]>([]);
   const [copied, setCopied] = useState(false);
-  const [step, setStep] = useState<"input" | "codes">("input");
+  const [step, setStep] = useState<"input" | "loading" | "codes">("input");
 
-  const handleGenerate = (e: React.FormEvent) => {
+  const handleGenerate = async (e: React.FormEvent) => {
     e.preventDefault();
     const count = parseInt(employeeCount);
-    if (!count || count < 1) return;
-    const generated = generatePlaceholderCodes(count);
-    setCodes(generated);
-    setStep("codes");
+    if (!count || count < 1 || !companyName.trim()) return;
+
+    setStep("loading");
+    try {
+      const response = await fetch(N8N_WEBHOOK, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          firmenname: companyName.trim(),
+          anzahl_mitarbeiter: count,
+        }),
+      });
+
+      if (!response.ok) throw new Error(`Fehler: ${response.status}`);
+
+      const data = await response.json();
+
+      if (!data.codes || data.codes.length === 0) {
+        throw new Error("Keine Codes verfügbar");
+      }
+
+      setCodes(data.codes);
+      setStep("codes");
+    } catch (err) {
+      console.error(err);
+      toast({
+        title: "Fehler beim Generieren",
+        description: "Codes konnten nicht geladen werden. Bitte versuche es erneut.",
+        variant: "destructive",
+      });
+      setStep("input");
+    }
   };
 
   const handleCopyAll = async () => {
@@ -65,10 +86,10 @@ const DiscountCodes = () => {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleShareSlack = async () => {
+  const handleShareSlack = () => {
     toast({
-      title: "Slack-Integration",
-      description: "Die Slack-Integration wird eingerichtet. Bitte verbinden Sie zunächst Ihren Slack-Workspace.",
+      title: "Slack",
+      description: "Die Codes wurden bereits automatisch in #b2bpartnerships geteilt.",
     });
   };
 
@@ -110,28 +131,25 @@ const DiscountCodes = () => {
             {steps.map((s, i) => (
               <AnimatedSection key={i} delay={0.1 + i * 0.1}>
                 <motion.div
-                  className="group relative h-full rounded-2xl border border-border/50 bg-card/40 backdrop-blur-sm p-6 md:p-7 flex flex-col items-center text-center transition-all duration-500 hover:bg-card/60 hover:shadow-2xl hover:border-primary/30"
+                  className="group relative h-full rounded-2xl border border-border/50 bg-card/40 backdrop-blur-sm p-6 md:p-7 flex flex-col
+  items-center text-center transition-all duration-500 hover:bg-card/60 hover:shadow-2xl hover:border-primary/30"
                   whileHover={{ y: -4 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  {/* Hover glow */}
-                  <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(circle_at_50%_50%,hsla(152,69%,53%,0.06),transparent_70%)]" />
-
-                  {/* Number badge */}
-                  <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4 relative z-10">{s.number}</span>
-
-                  {/* Icon */}
+                  <div
+                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500
+  bg-[radial-gradient(circle_at_50%_50%,hsla(152,69%,53%,0.06),transparent_70%)]"
+                  />
+                  <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4 relative z-10">
+                    {s.number}
+                  </span>
                   <motion.div
                     className="w-14 h-14 rounded-2xl bg-primary/15 border border-primary/20 flex items-center justify-center mb-5 relative z-10"
                     whileHover={{ scale: 1.1, rotate: -8 }}
                   >
                     <s.icon className="w-7 h-7 text-primary" />
                   </motion.div>
-
-                  {/* Title */}
                   <h3 className="font-display text-lg font-bold text-foreground mb-2 relative z-10">{s.title}</h3>
-
-                  {/* Description */}
                   <p className="text-sm text-muted-foreground leading-relaxed relative z-10">{s.description}</p>
                 </motion.div>
               </AnimatedSection>
@@ -140,10 +158,10 @@ const DiscountCodes = () => {
         </div>
       </section>
 
-      {/* Form / Codes */}
+      {/* Form / Loading / Codes */}
       <section className="px-4">
         <div className="max-w-3xl mx-auto">
-          {step === "input" ? (
+          {step === "input" && (
             <AnimatedSection delay={0.4}>
               <Card className="glass-card rounded-2xl overflow-hidden">
                 <CardContent className="p-8 space-y-6">
@@ -153,10 +171,11 @@ const DiscountCodes = () => {
                     </div>
                     <h2 className="text-xl font-bold">Jetzt Codes generieren</h2>
                   </div>
-
                   <form onSubmit={handleGenerate} className="space-y-4 pt-2">
                     <div>
-                      <Label htmlFor="company" className="mb-1.5 block">Firmenname *</Label>
+                      <Label htmlFor="company" className="mb-1.5 block">
+                        Firmenname *
+                      </Label>
                       <Input
                         id="company"
                         required
@@ -174,7 +193,7 @@ const DiscountCodes = () => {
                         id="count"
                         type="number"
                         min="1"
-                        max="1000"
+                        max="500"
                         required
                         value={employeeCount}
                         onChange={(e) => setEmployeeCount(e.target.value)}
@@ -189,7 +208,24 @@ const DiscountCodes = () => {
                 </CardContent>
               </Card>
             </AnimatedSection>
-          ) : (
+          )}
+
+          {step === "loading" && (
+            <AnimatedSection delay={0}>
+              <Card className="glass-card rounded-2xl overflow-hidden">
+                <CardContent className="p-8 flex flex-col items-center justify-center gap-4 min-h-[200px]">
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                    className="w-10 h-10 rounded-full border-2 border-primary border-t-transparent"
+                  />
+                  <p className="text-muted-foreground">Codes werden generiert…</p>
+                </CardContent>
+              </Card>
+            </AnimatedSection>
+          )}
+
+          {step === "codes" && (
             <AnimatedSection delay={0.1}>
               <Card className="glass-card rounded-2xl overflow-hidden">
                 <CardContent className="p-8 space-y-6">
@@ -199,18 +235,11 @@ const DiscountCodes = () => {
                       <p className="text-sm text-muted-foreground">für {companyName}</p>
                     </div>
                     <div className="flex gap-2">
-                      <Button
-                        variant="outline"
-                        onClick={handleCopyAll}
-                        className="gap-2 btn-glow"
-                      >
+                      <Button variant="outline" onClick={handleCopyAll} className="gap-2 btn-glow">
                         {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
                         {copied ? "Kopiert!" : "Alle kopieren"}
                       </Button>
-                      <Button
-                        onClick={handleShareSlack}
-                        className="gap-2 btn-glow"
-                      >
+                      <Button onClick={handleShareSlack} className="gap-2 btn-glow">
                         <Send className="w-4 h-4" />
                         In Slack teilen
                       </Button>
@@ -221,7 +250,8 @@ const DiscountCodes = () => {
                     {codes.map((code, i) => (
                       <div
                         key={i}
-                        className="flex items-center justify-between px-4 py-2.5 rounded-lg bg-background/40 hover:bg-background/60 transition-colors font-mono text-sm"
+                        className="flex items-center justify-between px-4 py-2.5 rounded-lg bg-background/40 hover:bg-background/60 transition-colors
+   font-mono text-sm"
                       >
                         <span>{code}</span>
                         <button
@@ -239,7 +269,10 @@ const DiscountCodes = () => {
 
                   <Button
                     variant="outline"
-                    onClick={() => { setStep("input"); setCodes([]); }}
+                    onClick={() => {
+                      setStep("input");
+                      setCodes([]);
+                    }}
                     className="w-full"
                   >
                     Neue Codes generieren
